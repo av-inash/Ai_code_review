@@ -3,6 +3,8 @@ import Redis from "ioredis"
 // dotenv.config()
 
 //Railway REDIS_URL deta hai — locally individual vars use hote hain
+
+console.log("redis url",process.env.REDIS_URL);
 const redis = process.env.REDIS_URL
   ? new Redis(process.env.REDIS_URL)  // Railway pe
   : new Redis({                        // Local pe
