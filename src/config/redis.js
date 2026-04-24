@@ -1,6 +1,6 @@
 import Redis from "ioredis"
-import dotenv from "dotenv"
-dotenv.config()
+// import dotenv from "dotenv"
+// dotenv.config()
 
 // Railway REDIS_URL deta hai — locally individual vars use hote hain
 const redis = process.env.REDIS_URL
