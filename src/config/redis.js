@@ -6,8 +6,8 @@ dotenv.config()
 const redis = process.env.REDIS_URL
   ? new Redis(process.env.REDIS_URL)  // Railway pe
   : new Redis({                        // Local pe
-      host: process.env.REDISHOST || "localhost",
-      port: process.env.REDISPORT || 6379,
+      host: process.env.REDISHOST ,
+      port: process.env.REDISPORT ,
       lazyConnect: true,
       retryStrategy: (times) => {
         if (times > 3) {
