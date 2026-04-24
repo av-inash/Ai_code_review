@@ -3,20 +3,24 @@ import Redis from "ioredis"
 // dotenv.config()
 
 // Railway REDIS_URL deta hai — locally individual vars use hote hain
-const redis = process.env.REDIS_URL
-  ? new Redis(process.env.REDIS_URL)  // Railway pe
-  : new Redis({                        // Local pe
-      host: process.env.REDISHOST ,
-      port: process.env.REDISPORT ,
-      lazyConnect: true,
-      retryStrategy: (times) => {
-        if (times > 3) {
-          console.warn("Redis connect nahi hua — caching disabled")
-          return null
-        }
-        return Math.min(times * 100, 3000)
-      }
-    })
+// const redis = process.env.REDIS_URL
+//   ? new Redis(process.env.REDIS_URL)  // Railway pe
+//   : new Redis({                        // Local pe
+//       host: process.env.REDISHOST ,
+//       port: process.env.REDISPORT ,
+//       lazyConnect: true,
+//       retryStrategy: (times) => {
+//         if (times > 3) {
+//           console.warn("Redis connect nahi hua — caching disabled")
+//           return null
+//         }
+//         return Math.min(times * 100, 3000)
+//       }
+//     })
+const redis = new Redis(process.env.REDIS_URL, {
+  tls: {}, // Railway ke liye important
+  maxRetriesPerRequest: null,
+});
 
 redis.on("connect", () => {
   console.log("✅ Redis connected")
@@ -27,3 +31,6 @@ redis.on("error", (err) => {
 })
 
 export default redis
+
+
+
