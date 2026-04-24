@@ -3,8 +3,8 @@ import dotenv from "dotenv"
 dotenv.config()
 
 // Railway REDIS_URL deta hai — locally individual vars use hote hain
-const redis = process.env.REDISURL
-  ? new Redis(process.env.REDISURL)  // Railway pe
+const redis = process.env.REDIS_URL
+  ? new Redis(process.env.REDIS_URL)  // Railway pe
   : new Redis({                        // Local pe
       host: process.env.REDISHOST || "localhost",
       port: process.env.REDISPORT || 6379,
