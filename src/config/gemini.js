@@ -3,6 +3,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const apiKey = process.env.GEMINI_API_KEY;
+const prot=process.env.PORT  
+console.log("prottttt",prot)
+console.log("gemni keyyyy",apiKey)
 if (!apiKey) {
   throw new Error("GEMINI_API_KEY is missing in .env file");
 }
