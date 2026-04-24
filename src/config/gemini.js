@@ -2,11 +2,12 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 dotenv.config();
 
-if (!process.env.GEMINI_API_KEY) {
+const apiKey = process.env.GEMINI_API_KEY;
+if (!apiKey) {
   throw new Error("GEMINI_API_KEY is missing in .env file");
 }
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI(apiKey);
 
 // Temperature 0.1 — why not 0? 
 // Pure 0 can sometimes make AI too rigid and miss context
@@ -20,3 +21,6 @@ export const getModel = (temperature = 0.1) => {
     },
   });
 };
+
+
+
